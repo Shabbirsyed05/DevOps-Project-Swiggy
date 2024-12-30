@@ -1,0 +1,35 @@
+IAM -> User -> k8s -> administrator access -> copy access key and secret key
+
+https://github.com/Shabbirsyed05/Terraform-Script-Swiggy-Kastro
+
+clone the above repository to local and run it using terraform
+
+##### create a key_pair and update in the key_name in main.tf file.
+
+aws configure => region (ap-southeast-2)
+terraform init
+terraform plan
+terraform apply --auto-approve
+
+Now jdk17 , jenkins, docker, trivy will be installed
+
+ip:8080 (jenkins) -> open and do initialization
+Plugins:
+Eclipse Termurin installer,  pipeline: Stage view
+Sonarqube Scanner
+nodejs
+owasp dependency check
+docker , docker commons, docker api, docker pipeline, docker build step
+
+before configuring SonarQube in jenkins , we need to generate a SoanrQube token to establish a connection b/w jenkins and SonarQube.
+Goto SonarQube console console => Administrator(top pane) -> 'Security' drop down -> users -> 3 dots -> Generate token (name : jenkins)
+
+Manage Jenkins ->  System configuration -> tools =>
+JDK => name (jdk17) , check install automatically ->Install from adoptium.net , jdk-17.0.11+9
+SoanrQube Scanner Installation => name (sonar-scanner) , version (latest version : 6.2.0.4610)
+Node JS => name (node23) , version (latest : nodeJS 23.1.0) 
+Dependency check => nme (DP-check) , automatcially -> install from Github.com (select latest version : 10.0.4)
+Docker => name (docker) , automatcially -> Download from docker.com , version (latest)
+
+
+ip:9000 (sonarqube) ->
