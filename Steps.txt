@@ -14,6 +14,7 @@ terraform apply --auto-approve
 Now jdk17 , jenkins, docker, trivy will be installed
 
 ip:8080 (jenkins) -> open and do initialization
+
 Plugins:
 Eclipse Termurin installer,  pipeline: Stage view
 Sonarqube Scanner
@@ -21,9 +22,11 @@ nodejs
 owasp dependency check
 docker , docker commons, docker api, docker pipeline, docker build step
 
-before configuring SonarQube in jenkins , we need to generate a SoanrQube token to establish a connection b/w jenkins and SonarQube.
+ip:9000 (sonarqube) ->
+Before configuring SonarQube in jenkins , we need to generate a SoanrQube token to establish a connection b/w jenkins and SonarQube.
 Goto SonarQube console console => Administrator(top pane) -> 'Security' drop down -> users -> 3 dots -> Generate token (name : jenkins)
 
+Tools configuration:
 Manage Jenkins ->  System configuration -> tools =>
 JDK => name (jdk17) , check install automatically ->Install from adoptium.net , jdk-17.0.11+9
 SoanrQube Scanner Installation => name (sonar-scanner) , version (latest version : 6.2.0.4610)
@@ -31,5 +34,29 @@ Node JS => name (node23) , version (latest : nodeJS 23.1.0)
 Dependency check => nme (DP-check) , automatcially -> install from Github.com (select latest version : 10.0.4)
 Docker => name (docker) , automatcially -> Download from docker.com , version (latest)
 
+Configuration of SonarQube , docker Token in Jenkins :
+Manage Jenkins -> Security -> Credentials -> global =>
+kind (secret text) , secret (sonarqube_token) , id (sonar-token)
+kind (username and password) , username (docker_username) , password (docker_token/pass) , iD (docker-creds)
 
-ip:9000 (sonarqube) ->
+Create webhook in SonarQube :
+SonarQube Dashboard -> Administration -> Configuration -> webhooks => create
+name (jenkins) , url (http:jenkins_ip:8080/sonarqube-webhook/)
+
+System Configuration in Jenkins :
+Manage Jenkins -> System -> SonarQube Server =>
+name (sonar-server) , url (https://sonar:9000) , server authentication token (sonar-token (from dropdown))
+
+Job:
+Jenkins -> swiggy app (pipeline) -> pipeline code is in below github
+https://github.com/Shabbirsyed05/DevOps-Project-Swiggy/blob/master/jenkinsfile
+
+server(ec2 instance) :
+ls 
+docker images
+docker ps
+
+
+ip:3000 (swiggy app) (will be opened)
+
+
