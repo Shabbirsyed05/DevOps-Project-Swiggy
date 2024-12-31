@@ -9,7 +9,7 @@ clone the above repository to local and run it using terraform
 aws configure => region (ap-southeast-2)
 terraform init
 terraform plan
-terraform apply --auto-approve
+terraform apply --auto-approve (cross validate the region, keypair, ami id)
 
 Now jdk17 , jenkins, docker, trivy will be installed
 
