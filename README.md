@@ -10,6 +10,8 @@
 
 ![image](https://github.com/user-attachments/assets/70b53d3f-361e-4c7b-99c6-d58e0d068ad4)
 
+![image](https://github.com/user-attachments/assets/5045c2e7-4b3d-415f-ba77-db5b8e0b4d18)
+
 In this **real-time DevOps project**, I demonstrate how to **deploy a Swiggy Clone App** using various modern tools and services in the DevOps ecosystem.
 ## 🛠️ Tools & Services Used:
 
