@@ -61,4 +61,4 @@ ip:3000 (swiggy app) (will be opened)
 
 u can verify the swiggy in docker ps, dockerhub (image) , sonarqube (vulnerabilities)
 
-
+terraform destroy
